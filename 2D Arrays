@@ -1,0 +1,91 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner in = new Scanner(System.in);
+        int rows = in.nextInt();
+        int cols = in.nextInt();
+        
+        int[][] arr = new int[rows][cols];
+        int[][] arr2 = new int[rows][cols];
+        int[][] sum = new int[rows][cols];
+
+        int flowerCount = 1;
+        
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<cols; j++) {
+                arr[i][j] = in.nextInt();
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+        System.out.println("===================================");
+
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<cols; j++) {
+                arr2[i][j] = in.nextInt();
+                System.out.print(arr2[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+                
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<cols; j++) {
+                sum[i][j] = arr[i][j] + arr2[i][j];
+
+            }
+        }
+        
+        
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<cols; j++) {
+                if(arr[i][j] == 0 && flowerCount>0) {
+                    arr[i][j] = 1;
+                    flowerCount--;
+                } else if(arr[i][j]==1) {
+                    arr[i][j] = -1;
+                    flowerCount++;
+                }
+            }
+        }
+        
+        System.out.println("===================================");
+                
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<cols; j++) {
+                System.out.print(sum[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+        
+        
+    }
+}
+
+
+// boolean searchTheMatrix (int[][] matrix, int row, int col, int target) {
+//     for(int i=0; i<row; i++) {
+//         for(int j=0; j<col; j++) {
+//             if(matrix[i][j] == target) {
+//                 return true;
+//             } 
+//         }
+//     }
+    
+//     return false;  
+// } 
+
+// Approach 1:
+//     - While going through the elements of the array, identify whether they are 
+//         0 or 1
+//     - if(it is a 0) - change it to a 1 and decrease the flowerCount by 1
+//     - otherwise - increase the flowerCount;
+
+
+// // Approach 2:
+//     - Get all the stone locations in the first pass
+//     - replace stones with flowers in the second pass
+    
